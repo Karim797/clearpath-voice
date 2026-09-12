@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+*.db
+runtime/
+.DS_Store
+
+demo_run.txt
+demo_clearpath.db

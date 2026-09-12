@@ -1,0 +1,18 @@
+[project]
+name = "clearpath-voice"
+version = "0.1.0"
+description = "Bounded-action multilingual voice recovery for correctable government application rejections"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.128.2",
+  "uvicorn[standard]==0.48.0",
+  "httpx==0.28.1",
+  "pydantic==2.13.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
