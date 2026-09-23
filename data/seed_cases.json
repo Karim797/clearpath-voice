@@ -1,0 +1,126 @@
+[
+  {
+    "id": "DXB-R-260901",
+    "applicant_name": "Mariam Hassan",
+    "phone": "+971500000101",
+    "preferred_language": "ar",
+    "status": "RETURNED_FOR_AMENDMENT",
+    "rejection_code": "PASSPORT_EXPIRY_MISMATCH",
+    "rejection_message": "The passport expiry date in the application does not match the submitted document.",
+    "correction_deadline": "2026-10-10",
+    "contact_consent": true,
+    "contact_window_start": 9,
+    "contact_window_end": 20,
+    "allowed_fields": [
+      "passport_expiry"
+    ],
+    "required_documents": [],
+    "current_data": {
+      "passport_expiry": "2027-02-11",
+      "passport_number": "N1234567"
+    },
+    "requires_attendance": false,
+    "demo_otp": "482731",
+    "authoritative_data": {
+      "passport_expiry": "2028-02-11",
+      "passport_number": "N1234567"
+    },
+    "deadline_days": 30,
+    "contact_role": "applicant",
+    "synthetic_mrz_line2": "N1234567<7XXX9001011<2802116<<<<<<<<<<<<<<02"
+  },
+  {
+    "id": "DXB-R-260902",
+    "applicant_name": "Omar Khan",
+    "phone": "+971500000102",
+    "preferred_language": "en",
+    "status": "MISSING_INFORMATION",
+    "rejection_code": "MISSING_PASSPORT_COPY",
+    "rejection_message": "A readable passport copy is missing from the submitted application.",
+    "correction_deadline": "2026-10-10",
+    "contact_consent": true,
+    "contact_window_start": 9,
+    "contact_window_end": 20,
+    "allowed_fields": [],
+    "required_documents": [
+      "passport_copy"
+    ],
+    "current_data": {
+      "passport_number": "P9988776"
+    },
+    "requires_attendance": false,
+    "demo_otp": "274915",
+    "authoritative_data": {},
+    "deadline_days": 30,
+    "contact_role": "applicant"
+  },
+  {
+    "id": "DXB-R-260903",
+    "applicant_name": "Sara Ali",
+    "phone": "+971500000103",
+    "preferred_language": "ar",
+    "status": "ATTENDANCE_REQUIRED",
+    "rejection_code": "BIOMETRIC_REQUIRED",
+    "rejection_message": "In-person biometric attendance is required before processing can continue.",
+    "correction_deadline": "2026-10-15",
+    "contact_consent": true,
+    "contact_window_start": 9,
+    "contact_window_end": 20,
+    "allowed_fields": [],
+    "required_documents": [],
+    "current_data": {},
+    "requires_attendance": true,
+    "demo_otp": "681204",
+    "authoritative_data": {},
+    "deadline_days": 35,
+    "contact_role": "applicant"
+  },
+  {
+    "id": "DXB-R-260904",
+    "applicant_name": "Daniel Joseph",
+    "phone": "+971500000104",
+    "preferred_language": "en",
+    "status": "RETURNED_FOR_AMENDMENT",
+    "rejection_code": "LEGAL_OR_DISPUTED",
+    "rejection_message": "The applicant disputes the legal basis of the rejection.",
+    "correction_deadline": "2026-10-12",
+    "contact_consent": true,
+    "contact_window_start": 9,
+    "contact_window_end": 20,
+    "allowed_fields": [],
+    "required_documents": [],
+    "current_data": {},
+    "requires_attendance": false,
+    "demo_otp": "905122",
+    "authoritative_data": {},
+    "deadline_days": 30,
+    "contact_role": "applicant"
+  },
+  {
+    "id": "DXB-R-260905",
+    "applicant_name": "Noor Ahmed",
+    "phone": "+971500000105",
+    "preferred_language": "ur",
+    "status": "RETURNED_FOR_AMENDMENT",
+    "rejection_code": "PASSPORT_NUMBER_TYPO",
+    "rejection_message": "The passport number appears inconsistent with the submitted passport copy.",
+    "correction_deadline": "2026-10-11",
+    "contact_consent": false,
+    "contact_window_start": 9,
+    "contact_window_end": 20,
+    "allowed_fields": [
+      "passport_number"
+    ],
+    "required_documents": [],
+    "current_data": {
+      "passport_number": "P12345X"
+    },
+    "requires_attendance": false,
+    "demo_otp": "113840",
+    "authoritative_data": {
+      "passport_number": "P1234567"
+    },
+    "deadline_days": 30,
+    "contact_role": "individual_sponsor"
+  }
+]

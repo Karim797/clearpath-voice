@@ -37,8 +37,6 @@ This is intentionally a **bounded correction agent**, not an autonomous governme
 
 ## Architecture
 
-See [`docs/architecture.svg`](docs/architecture.svg) and [`docs/architecture.md`](docs/architecture.md).
-
 ```
 Government case system
         │  rejection event
@@ -83,20 +81,7 @@ app/
     admin.py               protected admin evidence + synthetic web-demo capability issuance
 
 data/seed_cases.json       synthetic cases only
-reference_policy/          human-readable reference files; not wired to RAG
 
-elevenlabs/
-  agent_prompt.md          production-style agent prompt
-  workflow_spec.md         workflow graph + node-level tool scoping
-  tool_configs/            webhook-tool dashboard field maps
-
-docs/
-  threat_model.md
-  evaluation_plan.md
-  demo_script.md
-  architecture.svg
-
-tests/                     deterministic guardrail + happy-path tests
 scripts/seed.py            reset synthetic dataset
 scripts/demo_flow.py       full local correction walkthrough
 ```
@@ -129,14 +114,6 @@ Run the complete local primary flow:
 python scripts/demo_flow.py
 ```
 
-Run tests:
-
-```bash
-pytest -q
-```
-
-Current checked result: **45 passed**.
-
 ---
 
 ## Demo cases
@@ -161,8 +138,8 @@ The build uses Agent Workflows, Eleven v3 Conversational, Scribe v2 Realtime, we
 
 In ElevenAgents, create an agent and apply:
 
-- system prompt: [`elevenlabs/agent_prompt.md`](elevenlabs/agent_prompt.md)
-- workflow: [`elevenlabs/workflow_spec.md`](elevenlabs/workflow_spec.md)
+- a system prompt that keeps the agent inside its tool surface
+- a workflow with node-level tool scoping
 - Eleven v3 Conversational for restrained multilingual voice
 - Scribe v2 Realtime for realtime listening and turn-taking
 - Arabic + English first, with later supported-language QA
@@ -180,11 +157,11 @@ X-ClearPath-Case-Capability: {{secret__case_capability}}
 X-Conversation-Id: {{system__conversation_id}}
 ```
 
-The agent does not supply `case_id`. The first web-demo tool call lazily binds the short-lived capability to `system__conversation_id`; later mismatches are rejected. Field maps are in [`elevenlabs/tool_configs/`](elevenlabs/tool_configs).
+The agent does not supply `case_id`. The first web-demo tool call lazily binds the short-lived capability to `system__conversation_id`; later mismatches are rejected.
 
-Initialize `session_id`, `action_token`, and `document_action_token` as empty strings in the dashboard. `verify_applicant` and the preview tools then overwrite them through sanitized dynamic-variable assignments. See [`elevenlabs/dashboard_setup.md`](elevenlabs/dashboard_setup.md) for the exact configuration.
+Initialize `session_id`, `action_token`, and `document_action_token` as empty strings in the dashboard. `verify_applicant` and the preview tools then overwrite them through sanitized dynamic-variable assignments.
 
-**Do not expose every tool on every workflow node.** Follow the node-level scope table in the workflow spec.
+**Do not expose every tool on every workflow node.** Scope each tool to the workflow nodes that need it.
 
 ### 3. Configure a web demo
 
@@ -235,7 +212,7 @@ The receiver validates the `ElevenLabs-Signature` timestamp/HMAC in production, 
 
 ### 6. Agent Testing
 
-The test plan is in [`docs/evaluation_plan.md`](docs/evaluation_plan.md):
+Planned ElevenLabs Agent Testing coverage:
 
 - simulation tests for full multi-turn outcomes;
 - next-reply tests for disclosure, language, and policy wording;
@@ -260,17 +237,14 @@ For `DXB-R-260901`, the preview value comes from a versioned synthetic passport 
 
 ---
 
-## Evaluation and evidence
+## What's in this repo
 
-- capability-bound callable-agent integration with web/outbound conversation binding;
-- primary and failure-path demo script;
-- architecture one-pager;
-- approved bilingual backend wording + human-readable reference policy files (RAG intentionally non-core);
-- webhook tool map;
-- deterministic backend tests;
-- Agent Testing plan;
-- transcript/evaluation receiver;
-- audit-chain evidence endpoint.
+- FastAPI policy backend with capability-bound webhook tools;
+- verification, Correction Envelope, and two-phase commit logic;
+- approved bilingual (Arabic/English) backend wording;
+- HMAC-signed commit tokens and post-call webhook verification;
+- integrity-linked audit chain with an evidence endpoint;
+- synthetic seed cases and a full local demo walkthrough.
 
 ---
 
