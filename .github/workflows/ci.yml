@@ -54,7 +54,6 @@ jobs:
         run: docker build -t clearpath-voice:ci .
 
   live-health:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
