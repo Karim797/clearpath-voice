@@ -52,3 +52,29 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify production image builds
         run: docker build -t clearpath-voice:ci .
+
+  live-health:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Verify hosted Railway deployment
+        env:
+          HEALTH_URL: https://clearpath-voice-production-36b5.up.railway.app/health
+          DEMO_URL: https://clearpath-voice-production-36b5.up.railway.app/demo
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 20); do
+            health_code=$(curl -sS -o /tmp/health.json -w "%{http_code}" "$HEALTH_URL" || true)
+            demo_code=$(curl -sS -o /tmp/demo.html -w "%{http_code}" "$DEMO_URL" || true)
+            if [ "$health_code" = "200" ] && grep -q '"status":"ok"' /tmp/health.json && [ "$demo_code" = "200" ]; then
+              echo "Hosted deployment healthy"
+              cat /tmp/health.json
+              exit 0
+            fi
+            echo "Attempt $attempt/20: health=$health_code demo=$demo_code; waiting for deployment..."
+            sleep 15
+          done
+          echo "Hosted deployment did not become healthy in time"
+          cat /tmp/health.json || true
+          exit 1
