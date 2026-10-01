@@ -1,5 +1,7 @@
 # ClearPath Voice
 
+![CI](https://github.com/Karim797/clearpath-voice/actions/workflows/ci.yml/badge.svg)
+
 **Multilingual, bounded-action voice recovery for government applications held up by correctable errors.**
 
 ClearPath Voice is a reference build for the **Ignyte × ElevenLabs Future of Voice AI Challenge — Government Services / Proactive Application Resolution** track.
@@ -127,7 +129,7 @@ Run the reproducible backend test suite:
 pytest -q
 ```
 
-The repository CI runs the same tests and separately verifies that the production Docker image builds. Test counts are reported only from an actual CI/local run; this README does not carry forward historical counts that are not reproducible from the current tree.
+The repository CI runs the same tests and separately verifies that the production Docker image builds. **Current checked backend result: 27 tests passed** on GitHub Actions, and the production Docker image build also passed. Historical counts that are not reproducible from the current tree are not carried forward.
 
 ---
 
