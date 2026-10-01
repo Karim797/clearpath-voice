@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 TEST_DB = Path(__file__).resolve().parent / "clearpath_test.db"
 
 # Settings are instantiated at import time, so configure the test environment first.
