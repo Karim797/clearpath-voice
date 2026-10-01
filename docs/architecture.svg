@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <defs>
+    <style>
+      .bg{fill:#08111f}.box{fill:#0d1829;stroke:#3b82f6;stroke-width:2}.human{fill:#18212f;stroke:#94a3b8;stroke-width:2}
+      .title{font:700 34px Arial,sans-serif;fill:#f8fafc}.subtitle{font:500 18px Arial,sans-serif;fill:#cbd5e1}
+      .h{font:700 22px Arial,sans-serif;fill:#f8fafc}.t{font:500 16px Arial,sans-serif;fill:#cbd5e1}
+      .small{font:500 14px Arial,sans-serif;fill:#94a3b8}.accent{fill:#93c5fd}
+      .arrow{stroke:#93c5fd;stroke-width:3;fill:none;marker-end:url(#m)}.safe{stroke:#86efac;stroke-width:3;fill:none;marker-end:url(#g)}
+      .danger{stroke:#fca5a5;stroke-width:3;fill:none;marker-end:url(#r)}
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#93c5fd"/></marker>
+    <marker id="g" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#86efac"/></marker>
+    <marker id="r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fca5a5"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1400" height="820"/>
+  <text class="title" x="60" y="65">ClearPath Voice — Stage 2 Architecture</text>
+  <text class="subtitle" x="60" y="98">The LLM converses; the backend owns authority.</text>
+
+  <rect class="box" x="60" y="175" rx="18" width="260" height="180"/>
+  <text class="h" x="90" y="215">Caller / Channel</text>
+  <text class="t" x="90" y="255">Applicant / authorised contact</text>
+  <text class="t" x="90" y="285">Arabic + English</text>
+  <text class="t" x="90" y="315">Speech + one-time challenge</text>
+
+  <rect class="box" x="390" y="145" rx="18" width="300" height="240"/>
+  <text class="h" x="425" y="188">ElevenLabs Agent</text>
+  <text class="t" x="425" y="228">AI disclosure + conversation</text>
+  <text class="t" x="425" y="258">TTS / STT</text>
+  <text class="t" x="425" y="288">Scoped server tools</text>
+  <text class="t" x="425" y="318">Conversation ID</text>
+  <text class="small" x="425" y="350">No application approval authority</text>
+
+  <rect class="box" x="760" y="125" rx="18" width="330" height="280"/>
+  <text class="h" x="795" y="168">ClearPath Policy API</text>
+  <text class="t" x="795" y="208">FastAPI + deterministic policy</text>
+  <text class="t" x="795" y="238">Verified session</text>
+  <text class="t" x="795" y="268">Correction Envelope</text>
+  <text class="t" x="795" y="298">Preview → confirmation → commit</text>
+  <text class="t" x="795" y="328">One-shot HMAC action token</text>
+  <text class="t" x="795" y="358">Audit + post-call evidence</text>
+
+  <rect class="box" x="1160" y="120" rx="18" width="190" height="120"/>
+  <text class="h" x="1192" y="160">Case DB</text>
+  <text class="small" x="1192" y="192">Synthetic cases</text>
+  <text class="small" x="1192" y="214">Bounded state</text>
+
+  <rect class="box" x="1160" y="270" rx="18" width="190" height="130"/>
+  <text class="h" x="1183" y="312">Document of Record</text>
+  <text class="small" x="1192" y="344">Version + SHA-256</text>
+  <text class="small" x="1192" y="366">MRZ integrity checks</text>
+
+  <rect class="human" x="760" y="535" rx="18" width="330" height="150"/>
+  <text class="h" x="795" y="578">Human Officer Review</text>
+  <text class="t" x="795" y="616">Final approval / rejection remains human</text>
+  <text class="t" x="795" y="646">Disputes and exceptions route here</text>
+
+  <rect class="human" x="1160" y="535" rx="18" width="190" height="150"/>
+  <text class="h" x="1192" y="578">Audit Evidence</text>
+  <text class="small" x="1192" y="612">Redacted transcript</text>
+  <text class="small" x="1192" y="636">Evaluation JSON</text>
+  <text class="small" x="1192" y="660">Integrity-linked log</text>
+
+  <path class="arrow" d="M320 245 H390"/>
+  <text class="small" x="330" y="230">speech + OTP</text>
+  <path class="arrow" d="M690 245 H760"/>
+  <text class="small" x="700" y="222">HTTPS tools</text>
+  <path class="arrow" d="M1090 180 H1160"/>
+  <path class="arrow" d="M1090 330 H1160"/>
+  <path class="safe" d="M925 405 V535"/>
+  <text class="small" x="940" y="474">bounded submission</text>
+  <path class="safe" d="M1090 610 H1160"/>
+  <text class="small" x="1102" y="594">audit / evidence</text>
+
+  <path class="danger" d="M540 385 C540 500 610 610 760 610"/>
+  <text class="small" x="450" y="485">verification fail / dispute / vulnerability</text>
+  <text class="small" x="450" y="510">→ no mutation → human path</text>
+
+  <text class="subtitle" x="60" y="755">Trust boundary: caller speech is untrusted input. Sensitive identity values come only from the authoritative backend record.</text>
+  <text class="small" x="60" y="790">Challenge prototype with synthetic data; no UAE government affiliation is claimed.</text>
+</svg>
