@@ -1,5 +1,7 @@
 # ClearPath Voice
 
+![CI](https://github.com/Karim797/clearpath-voice/actions/workflows/ci.yml/badge.svg)
+
 **Multilingual, bounded-action voice recovery for government applications held up by correctable errors.**
 
 ClearPath Voice is a reference build for the **Ignyte × ElevenLabs Future of Voice AI Challenge — Government Services / Proactive Application Resolution** track.
@@ -36,6 +38,8 @@ This is intentionally a **bounded correction agent**, not an autonomous governme
 ---
 
 ## Architecture
+
+**One-page diagram:** [`docs/architecture.svg`](docs/architecture.svg) · [architecture notes](docs/architecture.md)
 
 ```
 Government case system
@@ -82,6 +86,11 @@ app/
 
 data/seed_cases.json       synthetic cases only
 
+tests/                     reproducible backend guardrail + high-stakes action tests
+docs/                      architecture, Stage 2 evaluation plan, demo scripts
+elevenlabs/                 workspace verification contract (no secrets)
+.github/workflows/ci.yml    pytest + production Docker build verification
+
 scripts/seed.py            reset synthetic dataset
 scripts/demo_flow.py       full local correction walkthrough
 ```
@@ -113,6 +122,14 @@ Run the complete local primary flow:
 ```bash
 python scripts/demo_flow.py
 ```
+
+Run the reproducible backend test suite:
+
+```bash
+pytest -q
+```
+
+The repository CI runs the same tests and separately verifies that the production Docker image builds. **Current checked backend result: 27 tests passed** on GitHub Actions, and the production Docker image build also passed. Historical counts that are not reproducible from the current tree are not carried forward.
 
 ---
 
@@ -212,6 +229,8 @@ The receiver validates the `ElevenLabs-Signature` timestamp/HMAC in production, 
 
 ### 6. Agent Testing
 
+Backend pytest coverage is committed under [`tests/`](tests/). ElevenLabs workspace tests are a separate Stage 2 evidence requirement; use [`docs/stage2_evaluation_plan.md`](docs/stage2_evaluation_plan.md) and record the platform-reported repeat-run pass rates.
+
 Planned ElevenLabs Agent Testing coverage:
 
 - simulation tests for full multi-turn outcomes;
@@ -234,6 +253,20 @@ python scripts/demo_flow.py
 The script issues a server-side per-call capability, shows pre-verification privacy, verifies the synthetic caller, requests a correction preview **without a proposed value**, commits the one-shot action, and verifies the audit chain.
 
 For `DXB-R-260901`, the preview value comes from a versioned synthetic passport document whose stored synthetic MRZ artifact is content-hashed and validated across all TD3 check digits used by the demo parser.
+
+---
+
+## Stage 2 evidence pack
+
+- [One-page architecture diagram](docs/architecture.svg)
+- [Architecture trust-boundary notes](docs/architecture.md)
+- [Stage 2 evaluation plan](docs/stage2_evaluation_plan.md)
+- [Primary + escalation demo scripts](docs/demo_script.md)
+- [ElevenLabs workspace verification contract](elevenlabs/README.md)
+- Reproducible backend tests in [`tests/`](tests/)
+- CI that runs pytest and builds the production Docker image
+
+The ElevenLabs dashboard remains the source of truth for Agent Testing pass rates, conversation-analysis screenshots, live voice latency, and workspace configuration. Those figures must not be invented or inferred from backend tests.
 
 ---
 
