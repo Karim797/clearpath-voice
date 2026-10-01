@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, stage2-hardening]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ENVIRONMENT: development
+      DEMO_MODE: "true"
+      PUBLIC_BASE_URL: http://localhost:8000
+      DATABASE_PATH: ./ci_clearpath.db
+      TOOL_API_KEY: ci-tool-key
+      EVENT_API_KEY: ci-event-key
+      ADMIN_API_KEY: ci-admin-key
+      ACTION_SIGNING_SECRET: ci-action-signing-secret
+      AUDIT_SIGNING_SECRET: ci-audit-signing-secret
+      ELEVENLABS_WEBHOOK_SECRET: ci-elevenlabs-webhook-secret
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Seed synthetic data
+        run: python -m scripts.seed
+
+      - name: Run tests
+        run: pytest -q
+
+      - name: Compile application
+        run: python -m compileall -q app scripts tests
+
+  docker-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify production image builds
+        run: docker build -t clearpath-voice:ci .
