@@ -32,3 +32,7 @@ The previously documented Railway `/health` address returned HTTP 404 during thi
 Configure the existing ElevenLabs agent against the restored HTTPS API. Verify dynamic variables and headers using `elevenlabs/README.md`; apply and test the instruction draft. Record one primary Arabic path and one disputed-value escalation path, retaining real conversation IDs, redacted transcripts, tool traces and post-call analysis. Run the platform tests repeatedly and attach actual results. Supply a reviewer-accessible live agent link and recording links before sending the submission.
 
 No current live voice recording, workspace pass rate or voice latency is claimed by this companion. Docker could not be built in this review environment because the Docker executable was unavailable.
+
+## Evening platform update
+
+Direct ElevenLabs access is now verified. The isolated stage2-completion branch has six corrected webhook copies, an operational prompt and post-call criteria. All 10 mocked platform runs passed (four simulations and one negative tool-call test, each repeated twice). See docs/stage2_completion.md and docs/evidence/elevenlabs-mocked-tests-2026-10-15.json. These are simulated text transcripts, not live voice recordings. Render creation was blocked by HTTP 402 requiring payment information; no service was created. Arabic audio configuration remains open after cross-field validation failures.

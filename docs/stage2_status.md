@@ -41,3 +41,7 @@ This section supersedes earlier COMPLETE claims for current hosting readiness.
 - Added a short submission README and workspace system-prompt draft. These do not establish live voice readiness.
 
 Final submission still requires the working live agent link, primary and escalation recordings, real transcripts/post-call analysis, workspace test evidence and restored deployment.
+
+## Connected-platform review - 15 October, evening
+
+See [completion review](stage2_completion.md). ElevenLabs mocked platform tests now passed **10/10** (four simulations and one negative tool test, two runs each). Current hosted readiness remains blocked: Railway trial expired; Render free service creation returned HTTP 402 requiring payment information. No live recording or Arabic audio result is claimed.
