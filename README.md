@@ -305,3 +305,7 @@ This is a challenge prototype using synthetic cases. It is not a deployed UAE go
 ## License
 
 MIT
+
+## Stage 2 refresh - 15 October 2026
+
+See [current review status](docs/stage2_status.md#fresh-review---15-october-2026) and the [short submission README](docs/submission_readme.md). Run `python scripts/stage2_evidence.py` for isolated, sanitized backend scenario evidence. The previously documented hosted endpoint returned HTTP 404 in this review; live voice readiness requires fresh workspace and deployment verification.

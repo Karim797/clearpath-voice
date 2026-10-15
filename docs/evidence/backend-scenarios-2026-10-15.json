@@ -1,0 +1,158 @@
+{
+  "generated_at_utc": "2026-10-15T11:20:10.957620+00:00",
+  "source_commit": "07ac06573b5e3b2651c10edb56e85a915ae11f07",
+  "scope": "Local synthetic backend scenarios. Not voice calls, transcripts, ElevenLabs Agent Testing, or live latency evidence.",
+  "scenarios_passed": 5,
+  "scenarios_total": 5,
+  "results": [
+    {
+      "scenario": "correction",
+      "outcome": "CORRECTION_SUBMITTED",
+      "checks": [
+        {
+          "check": "Pre-verification details withheld",
+          "passed": true
+        },
+        {
+          "check": "Verification succeeded",
+          "passed": true
+        },
+        {
+          "check": "Preview returned",
+          "passed": true
+        },
+        {
+          "check": "Document of record anchors preview",
+          "passed": true
+        },
+        {
+          "check": "Correction submitted, never application approval",
+          "passed": true
+        },
+        {
+          "check": "Retry is idempotent",
+          "passed": true
+        },
+        {
+          "check": "Audit chain verifies",
+          "passed": true
+        }
+      ],
+      "audit_events_checked": 3,
+      "evidence_kind": "local_synthetic_api"
+    },
+    {
+      "scenario": "dispute",
+      "outcome": "HUMAN_REVIEW",
+      "checks": [
+        {
+          "check": "Pre-verification details withheld",
+          "passed": true
+        },
+        {
+          "check": "Verification succeeded",
+          "passed": true
+        },
+        {
+          "check": "Preview returned",
+          "passed": true
+        },
+        {
+          "check": "Conflicting value receives no commit token",
+          "passed": true
+        },
+        {
+          "check": "Case frozen for qualified human review",
+          "passed": true
+        },
+        {
+          "check": "No sensitive mutation committed",
+          "passed": true
+        },
+        {
+          "check": "Audit chain verifies",
+          "passed": true
+        }
+      ],
+      "audit_events_checked": 3,
+      "evidence_kind": "local_synthetic_api"
+    },
+    {
+      "scenario": "verification_lockout",
+      "outcome": "VERIFICATION_LOCKED",
+      "checks": [
+        {
+          "check": "Pre-verification details withheld",
+          "passed": true
+        },
+        {
+          "check": "Incorrect verification rejected",
+          "passed": true
+        },
+        {
+          "check": "Incorrect verification rejected",
+          "passed": true
+        },
+        {
+          "check": "Incorrect verification rejected",
+          "passed": true
+        },
+        {
+          "check": "Automation locked after three failures",
+          "passed": true
+        },
+        {
+          "check": "No sensitive mutation committed",
+          "passed": true
+        },
+        {
+          "check": "Audit chain verifies",
+          "passed": true
+        }
+      ],
+      "audit_events_checked": 4,
+      "evidence_kind": "local_synthetic_api"
+    },
+    {
+      "scenario": "no_consent",
+      "outcome": "CONTACT_BLOCKED",
+      "checks": [
+        {
+          "check": "No consent blocks outbound dispatch",
+          "passed": true
+        },
+        {
+          "check": "No sensitive mutation committed",
+          "passed": true
+        },
+        {
+          "check": "Audit chain verifies",
+          "passed": true
+        }
+      ],
+      "audit_events_checked": 1,
+      "evidence_kind": "local_synthetic_api"
+    },
+    {
+      "scenario": "legal_escalation",
+      "outcome": "HUMAN_QUEUE",
+      "checks": [
+        {
+          "check": "Legal case routed to human queue",
+          "passed": true
+        },
+        {
+          "check": "No sensitive mutation committed",
+          "passed": true
+        },
+        {
+          "check": "Audit chain verifies",
+          "passed": true
+        }
+      ],
+      "audit_events_checked": 1,
+      "evidence_kind": "local_synthetic_api"
+    }
+  ],
+  "working_tree_note": "Executed with the Stage 2 refresh evidence runner added on top of the recorded baseline commit."
+}
