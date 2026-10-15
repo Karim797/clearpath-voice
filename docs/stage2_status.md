@@ -28,3 +28,20 @@ This tracker is deliberately conservative: **COMPLETE** means there is reproduci
 - production government integration;
 - real applicant throughput, latency, or correction-time improvement;
 - government affiliation or endorsement.
+
+## Fresh review - 15 October 2026
+
+This section supersedes earlier COMPLETE claims for current hosting readiness.
+
+- Fresh local backend run: **27 tests passed** (Python 3.12; JUnit evidence generated).
+- Fresh isolated API walkthroughs: **5/5 passed**, with asserted no-commit checks on failure/escalation paths. Reproduce with `python scripts/stage2_evidence.py`.
+- Previously documented Railway health endpoint: **HTTP 404 observed**; current hosted readiness is blocked pending restoration.
+- ElevenLabs browser session: sign-in required; workspace configuration, conversation evidence and Agent Testing have not been verified in this review.
+- Docker command now uses `${PORT:-8000}` for hosted-port compatibility. Docker image build was not rerun locally because Docker is unavailable.
+- Added a short submission README and workspace system-prompt draft. These do not establish live voice readiness.
+
+Final submission still requires the working live agent link, primary and escalation recordings, real transcripts/post-call analysis, workspace test evidence and restored deployment.
+
+## Connected-platform review - 15 October, evening
+
+See [completion review](stage2_completion.md). ElevenLabs mocked platform tests now passed **10/10** (four simulations and one negative tool test, two runs each). Current hosted readiness remains blocked: Railway trial expired; Render free service creation returned HTTP 402 requiring payment information. No live recording or Arabic audio result is claimed.
